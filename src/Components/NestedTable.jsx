@@ -249,138 +249,439 @@ const NestedTable = () => {
       ],
     },
     {
-        "name": "Dry fruits",
-        "children": [
-          {
-            "name": "Raisins",
-            "children": [
-              {
-                "name": "Nashik",
-                "children": ["Hybrid", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Dindigul",
-                "children": ["Hybrid", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Theni",
-                "children": ["GMO", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              }
-            ]
-          },
-          {
-            "name": "Figs",
-            "children": [
-              {
-                "name": "Cairo",
-                "children": ["Hybrid", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Istanbul",
-                "children": ["Hybrid", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Mangalore",
-                "children": ["GMO", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              }
-            ]
-          },
-          {
-            "name": "Dates",
-            "children": [
-              {
-                "name": "Dubai",
-                "children": ["Hybrid", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Tehran",
-                "children": ["Hybrid", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Sharjah",
-                "children": ["GMO", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Nuts",
-        "children": [
-          {
-            "name": "Cashew",
-            "children": [
-              {
-                "name": "Panruti",
-                "children": ["Hybrid", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Kannur",
-                "children": ["GMO", "Organic"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Guntur",
-                "children": ["Hybrid", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              }
-            ]
-          },
-          {
-            "name": "Walnut",
-            "children": [
-              {
-                "name": "Kalaktang",
-                "children": ["Hybrid", "Organic", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              },
-              {
-                "name": "Dheradhun",
-                "children": ["Organic", "GMO"].map(item => ({
-                  "name": item,
-                  "description": "Sample description for " + item
-                }))
-              }
-            ]
-          }
-        ]
-      }
+      name: "Dry fruits",
+      children: [
+        {
+          name: "Raisins",
+          children: [
+            {
+              name: "Nashik",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Dindigul",
+              children: ["Hybrid", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Theni",
+              children: ["GMO", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Figs",
+          children: [
+            {
+              name: "Cairo",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Istanbul",
+              children: ["Hybrid", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Mangalore",
+              children: ["GMO", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Dates",
+          children: [
+            {
+              name: "Dubai",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Tehran",
+              children: ["Hybrid", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Sharjah",
+              children: ["GMO", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Nuts",
+      children: [
+        {
+          name: "Cashew",
+          children: [
+            {
+              name: "Panruti",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Kannur",
+              children: ["GMO", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Guntur",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Walnut",
+          children: [
+            {
+              name: "Kalaktang",
+              children: ["Hybrid", "Organic", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Dheradhun",
+              children: ["Organic", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Tropical Fruits",
+      children: [
+        {
+          name: "Mangoes",
+          children: [
+            {
+              name: "Alphonso",
+              children: ["Hybrid", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Kesar",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Badami",
+              children: ["Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Papayas",
+          children: [
+            {
+              name: "Red Lady",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Solo",
+              children: ["Organic", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Medicinal Plants",
+      children: [
+        {
+          name: "Aloe Vera",
+          children: [
+            {
+              name: "Indian Aloe",
+              children: ["Organic", "Hybrid"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Tulsi",
+          children: [
+            {
+              name: "Rama Tulsi",
+              children: ["Organic", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Krishna Tulsi",
+              children: ["Hybrid"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Spices",
+      children: [
+        {
+          name: "Pepper",
+          children: [
+            {
+              name: "Black Pepper",
+              children: ["Organic", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "White Pepper",
+              children: ["Hybrid", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Cardamom",
+          children: [
+            {
+              name: "Green Cardamom",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Black Cardamom",
+              children: ["Organic", "Hybrid"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Leafy Greens",
+      children: [
+        {
+          name: "Spinach",
+          children: [
+            {
+              name: "Baby Spinach",
+              children: ["Organic", "Hydroponic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Savoy Spinach",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Lettuce",
+          children: [
+            {
+              name: "Romaine Lettuce",
+              children: ["Organic", "Hydroponic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Iceberg Lettuce",
+              children: ["Hybrid", "GMO"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Exotic Flowers",
+      children: [
+        {
+          name: "Orchids",
+          children: [
+            {
+              name: "Phalaenopsis",
+              children: ["Organic", "Hybrid"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Cattleya",
+              children: ["GMO", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Lilies",
+          children: [
+            {
+              name: "Tiger Lily",
+              children: ["Organic", "Hybrid"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Easter Lily",
+              children: ["GMO", "Organic"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Precious Metals",
+      children: [
+        {
+          name: "Gold",
+          children: [
+            {
+              name: "24K Gold",
+              children: ["Pure", "Alloyed"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "18K Gold",
+              children: ["Alloyed", "Recycled"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Platinum",
+          children: [
+            {
+              name: "950 Platinum",
+              children: ["Pure", "Alloyed"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "900 Platinum",
+              children: ["Alloyed", "Recycled"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Premium Fabrics",
+      children: [
+        {
+          name: "Silk",
+          children: [
+            {
+              name: "Mulberry Silk",
+              children: ["Handwoven", "Machine-made"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Tussar Silk",
+              children: ["Organic", "Dyed"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+        {
+          name: "Cashmere",
+          children: [
+            {
+              name: "Pashmina",
+              children: ["Handwoven", "Machine-made"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+            {
+              name: "Merino Wool",
+              children: ["Organic", "Blended"].map((item) => ({
+                name: item,
+                description: "Sample description for " + item,
+              })),
+            },
+          ],
+        },
+      ],
+    },
   ]);
 
   const handleOpenModal = (parentName) => {

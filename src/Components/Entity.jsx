@@ -303,35 +303,73 @@ const EntitiesTable = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen p-8">
-    <Header/>
- <Link to='/ui'> <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition">
-     Ui change
-    </button></Link>
+      <Header />
+      <Link to="/ui">
+        {" "}
+        <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition">
+          Ui change
+        </button>
+      </Link>
       {/* Header */}
       <div className="flex justify-between items-center w-full max-w-8xl mb-4 mt-20">
-  <h1 className="text-3xl font-bold">Entities</h1>
+        <h1 className="text-3xl font-bold">Entities</h1>
 
-   {/* Breadcrumbs Below */}
-   <div className="flex items-center space-x-2 mt-4">
-    {hierarchyLevels.map((level, index) => (
-      <div key={index} className="flex items-center space-x-2">
-        <span
-          className="px-4 py-3 text-xl border border-gray-300 cursor-pointer hover:text-blue-600 flex items-center"
-          onClick={() => handleNavigateBack(index)}
+        {/* Breadcrumbs Below */}
+        {/* <div className="flex items-center space-x-2 mt-4">
+          {hierarchyLevels.map((level, index) => (
+            <div key={index} className="flex items-center space-x-2">
+              <span
+                className="px-4 py-3 text-xl border border-gray-300 cursor-pointer hover:text-blue-600 flex items-center"
+                onClick={() => handleNavigateBack(index)}
+              >
+                {index === 0 ? (
+                  <span className="text-xl">🏠︎</span> // Home icon for L0
+                ) : (
+                  <span>L{index}</span> // L1, L2, etc.
+                )}
+                {index !== 0 && <span className="ml-1"> | {level.name}</span>}
+              </span>
+              {index < hierarchyLevels.length - 1 && (
+                <span className="text-gray-500">{">"}</span>
+              )}
+            </div>
+          ))}
+        </div> */}
+        <div className="flex items-center space-x-2 mt-4">
+          {hierarchyLevels.map((level, index) => (
+            
+            <div key={index} className="flex items-center space-x-2">
+              <span
+                className="px-4 py-3 text-xl border border-gray-300 cursor-pointer hover:text-blue-600 flex items-center"
+                onClick={() => handleNavigateBack(index)}
+              >
+                {index === 0 ? (
+                  <span className="flex items-center space-x-1">
+                    <span className="text-xl">🏠︎</span>
+                    {/* <span className="ml-1">{level.name}</span>{" "} */}
+                    {/* Home with name */}
+                  </span>
+                ) : (
+                  <span className="flex items-center space-x-1">
+                    <span>{`L${index} - ${level.name}`}</span>{" "}
+                    {/* L1 Department, L2 Team */}
+                  </span>
+                )}
+              </span>
+              {index < hierarchyLevels.length - 1 && (
+                <span className="text-gray-500">{">"}</span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={() => handleFormOpen()}
+          className="px-5 py-4 border text-xl font-bold"
         >
-          <span className="">L{index}</span>
-          {index !== 0 && <span className="ml-1"> | {level.name}</span>}
-        </span>
-        {index < hierarchyLevels.length - 1 && <span className="text-gray-500">{">"}</span>}
+          + New Entity
+        </button>
       </div>
-    ))}
-  </div>
-
-  <button onClick={() => handleFormOpen()} className="px-5 py-4 border text-xl font-bold">
-    + New Entity
-  </button>
-</div>
-
 
       {/* Table */}
       <div className="w-full max-w-8xl">
@@ -341,7 +379,9 @@ const EntitiesTable = () => {
               <tr>
                 <th className="border border-gray-300 p-6 text-left">ID</th>
                 <th className="border border-gray-300 p-6 text-left">NAME</th>
-                <th className="border border-gray-300 p-6 text-left">DESCRIPTION</th>
+                <th className="border border-gray-300 p-6 text-left">
+                  DESCRIPTION
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -349,7 +389,7 @@ const EntitiesTable = () => {
                 <tr
                   key={entity.id}
                   className="border border-gray-300 cursor-pointer"
-                  onClick={() => handleRowClick(entity.id)}
+                  onClick={() => handleRowClick(entity.id,entity.name)}
                 >
                   <td className="border border-gray-300 p-8">{entity.id}</td>
                   <td className="border border-gray-300 p-8">{entity.name}</td>
@@ -361,7 +401,10 @@ const EntitiesTable = () => {
                     {entity.description}
                     {hoveredIndex === index && (
                       <span className="absolute right-2 top-1/2 transform -translate-y-1/2 flex space-x-2 bg-white p-1">
-                        <button onClick={() => handleFormOpen(entity)} className="text-gray-500 hover:text-gray-700 p-4">
+                        <button
+                          onClick={() => handleFormOpen(entity)}
+                          className="text-gray-500 hover:text-gray-700 p-4"
+                        >
                           <Pencil size={16} />
                         </button>
                         <button className="text-gray-500 hover:text-gray-700 p-2">
@@ -378,15 +421,14 @@ const EntitiesTable = () => {
 
         {/* Render the New Entity Form */}
         {isFormOpen && (
-  <AddNewEntityForm
-    key={editingEntity?.id || "new"}  // Forces re-render when entity changes
-    onClose={handleFormClose}
-    existingEntity={editingEntity}
-    setEntities={setEntities}
-    entities={entities}
-  />
-)}
-
+          <AddNewEntityForm
+            key={editingEntity?.id || "new"} // Forces re-render when entity changes
+            onClose={handleFormClose}
+            existingEntity={editingEntity}
+            setEntities={setEntities}
+            entities={entities}
+          />
+        )}
       </div>
     </div>
   );
