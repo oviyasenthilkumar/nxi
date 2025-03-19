@@ -306,41 +306,19 @@ const EntitiesTable = () => {
       <Header />
       <Link to="/ui">
         {" "}
-        <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition">
+        <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition cursor-pointer">
           Ui change
         </button>
       </Link>
+      <h1 className="text-5xl font-bold text-start w-full">Entities</h1>
       {/* Header */}
-      <div className="flex justify-between items-center w-full max-w-8xl mb-4 mt-20">
-        <h1 className="text-3xl font-bold">Entities</h1>
-
+      <div className="flex justify-between items-center w-full max-w-8xl mb-4 mt-5">
         {/* Breadcrumbs Below */}
-        {/* <div className="flex items-center space-x-2 mt-4">
+        <div className="flex items-start w-full space-x-2 m-4">
           {hierarchyLevels.map((level, index) => (
             <div key={index} className="flex items-center space-x-2">
               <span
-                className="px-4 py-3 text-xl border border-gray-300 cursor-pointer hover:text-blue-600 flex items-center"
-                onClick={() => handleNavigateBack(index)}
-              >
-                {index === 0 ? (
-                  <span className="text-xl">🏠︎</span> // Home icon for L0
-                ) : (
-                  <span>L{index}</span> // L1, L2, etc.
-                )}
-                {index !== 0 && <span className="ml-1"> | {level.name}</span>}
-              </span>
-              {index < hierarchyLevels.length - 1 && (
-                <span className="text-gray-500">{">"}</span>
-              )}
-            </div>
-          ))}
-        </div> */}
-        <div className="flex items-center space-x-2 mt-4">
-          {hierarchyLevels.map((level, index) => (
-            
-            <div key={index} className="flex items-center space-x-2">
-              <span
-                className="px-4 py-3 text-xl border border-gray-300 cursor-pointer hover:text-blue-600 flex items-center"
+                className="px-4 py-3 text-xl border border-gray-300 cursor-pointer hover:text-blue-900 flex items-center"
                 onClick={() => handleNavigateBack(index)}
               >
                 {index === 0 ? (
@@ -362,10 +340,9 @@ const EntitiesTable = () => {
             </div>
           ))}
         </div>
-
         <button
           onClick={() => handleFormOpen()}
-          className="px-5 py-4 border text-xl font-bold"
+          className="px-5 py-4 border text-xl font-bold w-[15%]"
         >
           + New Entity
         </button>
@@ -389,7 +366,7 @@ const EntitiesTable = () => {
                 <tr
                   key={entity.id}
                   className="border border-gray-300 cursor-pointer"
-                  onClick={() => handleRowClick(entity.id,entity.name)}
+                  onClick={() => handleRowClick(entity.id, entity.name)}
                 >
                   <td className="border border-gray-300 p-8">{entity.id}</td>
                   <td className="border border-gray-300 p-8">{entity.name}</td>

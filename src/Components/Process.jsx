@@ -31,10 +31,13 @@ const ProcessTable = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen p-8">
-     <Link to='/ui'> <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition">
-     Ui change
-    </button></Link>
-    <Header/>
+      <Link to="/ui">
+        {" "}
+        <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition cursor-pointer">
+          Ui change
+        </button>
+      </Link>
+      <Header />
       <div className="flex justify-between items-center w-full max-w-8xl mb-4 mt-20">
         <h1 className="text-3xl font-bold">Process</h1>
         <button
@@ -49,31 +52,53 @@ const ProcessTable = () => {
           <table className="w-full border-collapse border border-gray-300">
             <thead className="bg-gray-100">
               <tr>
-                <th className="border border-gray-300 p-6 text-left">ASSOCIATIONS</th>
+                <th className="border border-gray-300 p-6 text-left">
+                  ASSOCIATIONS
+                </th>
                 <th className="border border-gray-300 p-6 text-left">ID</th>
                 <th className="border border-gray-300 p-6 text-left">PRE</th>
                 <th className="border border-gray-300 p-6 text-left">SUC</th>
                 <th className="border border-gray-300 p-6 text-left">INPUTS</th>
-                <th className="border border-gray-300 p-6 text-left">PROCESSING BRIEF</th>
-                <th className="border border-gray-300 p-6 text-left">OUTPUTS</th>
-                <th className="border border-gray-300 p-6 text-left">ACTIONS</th>
+                <th className="border border-gray-300 p-6 text-left">
+                  PROCESSING BRIEF
+                </th>
+                <th className="border border-gray-300 p-6 text-left">
+                  OUTPUTS
+                </th>
+                <th className="border border-gray-300 p-6 text-left">
+                  ACTIONS
+                </th>
               </tr>
             </thead>
             <tbody>
               {processes.map((process) => (
                 <tr key={process.id} className="border border-gray-300">
-                  <td className="border border-gray-300 p-6">{process.association}</td>
+                  <td className="border border-gray-300 p-6">
+                    {process.association}
+                  </td>
                   <td className="border border-gray-300 p-6">{process.id}</td>
                   <td className="border border-gray-300 p-6">{process.pre}</td>
                   <td className="border border-gray-300 p-6">{process.suc}</td>
-                  <td className="border border-gray-300 p-6">{process.inputs}</td>
-                  <td className="border border-gray-300 p-6">{process.processingBrief}</td>
-                  <td className="border border-gray-300 p-6">{process.outputs}</td>
+                  <td className="border border-gray-300 p-6">
+                    {process.inputs}
+                  </td>
+                  <td className="border border-gray-300 p-6">
+                    {process.processingBrief}
+                  </td>
+                  <td className="border border-gray-300 p-6">
+                    {process.outputs}
+                  </td>
                   <td className="border border-gray-300 p-6 flex space-x-2">
-                    <button className="text-gray-500 hover:text-gray-700" onClick={() => handleEdit(process)}>
+                    <button
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={() => handleEdit(process)}
+                    >
                       <Pencil size={16} />
                     </button>
-                    <button className="text-gray-500 hover:text-gray-700" onClick={() => handleDelete(process.id)}>
+                    <button
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={() => handleDelete(process.id)}
+                    >
                       <Trash size={16} />
                     </button>
                   </td>
@@ -83,7 +108,12 @@ const ProcessTable = () => {
           </table>
         </div>
         {isFormOpen && (
-          <ProcessForm onClose={handleFormClose} existingProcess={editingProcess} setProcesses={setProcesses} processes={processes} />
+          <ProcessForm
+            onClose={handleFormClose}
+            existingProcess={editingProcess}
+            setProcesses={setProcesses}
+            processes={processes}
+          />
         )}
       </div>
     </div>

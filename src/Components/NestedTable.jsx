@@ -762,82 +762,84 @@ const NestedTable = () => {
 
   return (
     <>
-         <Link to='/entities'> <button className="relative m-5 border   px-4 py-2  shadow-md  transition">
-     Ui change
-    </button></Link>
-    
-    <div className="overflow-x-auto p-4 bg-gray-800">
-    
-      <table className="w-full border-collapse text-white">
-        <thead>
-          <tr className="bg-gray-900 text-left">
-            <th className="p-2"></th>
-            <th className="p-2">L1</th>
-            <th className="p-2">L2</th>
-            <th className="p-2">L3</th>
-            <th className="p-2">L4</th>
-            <th className="p-2">+</th>
-            <th className="p-2">Description</th>
-            <th className="p-2">Attribute 1</th>
-            <th className="p-2">Attribute 2</th>
-            <th className="p-2">Attribute 3</th>
-            <th className="p-2">Attribute 4</th>
-          </tr>
-        </thead>
-        <tbody>{renderRows(tableData)}</tbody>
-      </table>
-      {showModal && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-white">
-            <h2 className="text-xl font-bold mb-4 text-center">
-              Add New Entity
-            </h2>
-            <form onSubmit={handleSubmit}>
-              <label className="block mb-2">Parent Name:</label>
-              <input
-                type="text"
-                name="parent"
-                value={formData.parent}
-                disabled
-                className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 text-white"
-              />
-              <label className="block mb-2">Name:</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 text-white"
-                required
-              />
-              <label className="block mb-2">Description:</label>
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 text-white h-20"
-                required
-              ></textarea>
-              <div className="flex justify-end gap-2">
-                <button
-                  type="button"
-                  className="bg-gray-500 text-white px-4 py-2 rounded"
-                  onClick={handleCloseModal}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
+      <Link to="/entities">
+        {" "}
+        <button className="relative m-5 border   px-4 py-2  shadow-md  transition cursor-pointer">
+          Ui change
+        </button>
+      </Link>
+
+      <div className="overflow-x-auto p-4 bg-gray-800">
+        <table className="w-full border-collapse text-white">
+          <thead>
+            <tr className="bg-gray-900 text-left">
+              <th className="p-2"></th>
+              <th className="p-2">L1</th>
+              <th className="p-2">L2</th>
+              <th className="p-2">L3</th>
+              <th className="p-2">L4</th>
+              <th className="p-2">+</th>
+              <th className="p-2">Description</th>
+              <th className="p-2">Attribute 1</th>
+              <th className="p-2">Attribute 2</th>
+              <th className="p-2">Attribute 3</th>
+              <th className="p-2">Attribute 4</th>
+            </tr>
+          </thead>
+          <tbody>{renderRows(tableData)}</tbody>
+        </table>
+        {showModal && (
+          <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-white">
+              <h2 className="text-xl font-bold mb-4 text-center">
+                Add New Entity
+              </h2>
+              <form onSubmit={handleSubmit}>
+                <label className="block mb-2">Parent Name:</label>
+                <input
+                  type="text"
+                  name="parent"
+                  value={formData.parent}
+                  disabled
+                  className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 text-white"
+                />
+                <label className="block mb-2">Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 text-white"
+                  required
+                />
+                <label className="block mb-2">Description:</label>
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 text-white h-20"
+                  required
+                ></textarea>
+                <div className="flex justify-end gap-2">
+                  <button
+                    type="button"
+                    className="bg-gray-500 text-white px-4 py-2 rounded"
+                    onClick={handleCloseModal}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded"
+                  >
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 };

@@ -27,11 +27,14 @@ const Association = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen p-8">
-     <Link to='/ui'> <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition">
-     Ui change
-    </button></Link>
-    <Header/>
-    
+      <Link to="/ui">
+        {" "}
+        <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition cursor-pointer">
+          Ui change
+        </button>
+      </Link>
+      <Header />
+
       {/* Header */}
       <div className="flex justify-between items-center w-full max-w-8xl mb-6 mt-10">
         <div className="flex items-center space-x-4">
@@ -61,7 +64,9 @@ const Association = () => {
               <tr>
                 <th className="border border-gray-300 p-6 text-left">ID</th>
                 <th className="border border-gray-300 p-6 text-left">NAME</th>
-                <th className="border border-gray-300 p-6 text-left">DESCRIPTION</th>
+                <th className="border border-gray-300 p-6 text-left">
+                  DESCRIPTION
+                </th>
               </tr>
             </thead>
             <tbody>
