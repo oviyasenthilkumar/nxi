@@ -765,7 +765,7 @@ const NestedTable = () => {
       <Link to="/entities">
         {" "}
         <button className="relative m-5 border   px-4 py-2  shadow-md  transition cursor-pointer">
-          Ui change
+          UI Change
         </button>
       </Link>
 
