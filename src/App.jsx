@@ -1,6 +1,6 @@
 
 import  Entity  from './Components/Entity'
-import Association from './Components/association'
+import Association from './Components/Association'
 import Process from './Components/Process'
 
 import React from "react";
