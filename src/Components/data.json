@@ -1,0 +1,119 @@
+{
+  "nestedArraysDirectory": [
+    {
+      "id": 1,
+      "arrayName": "array 1",
+      "dimensionDescription": "vegetables"
+    },
+    {
+      "id": 2,
+      "arrayName": "array 2",
+      "dimensionDescription": "fruits"
+    },
+    {
+      "id": 3,
+      "arrayName": "array 3",
+      "dimensionDescription": "nuts"
+    },
+    {
+      "id": 4,
+      "arrayName": "array 4",
+      "dimensionDescription": ".."
+    }
+  ],
+  "nestedArraysCreatorEditor": {
+    "categories": {
+      "Snow Fruits": {
+        "Apples": {
+          "Srinagar": ["Hybrid", "GMO", "Organic"],
+          "Shimla": ["Hybrid", "Organic"],
+          "Queenstown": ["Hybrid", "GMO"],
+          "Ooty": ["Organic"]
+        },
+        "Pears": {
+          "Shimla": ["Hybrid", "Organic"],
+          "Ooty": ["Organic"]
+        },
+        "Apricot": {
+          "Srinagar": ["Hybrid", "GMO"]
+        },
+        "Peach": {
+          "Queenstown": ["Hybrid", "GMO"]
+        }
+      },
+      "Dry Fruits": {
+        "Raisins": {
+          "Nask": ["Hybrid", "GMO"],
+          "Dindigul": ["Hybrid", "Organic"],
+          "Theni": ["GMO", "Organic"]
+        },
+        "Figs": {
+          "Cairo": ["Hybrid", "GMO"],
+          "Istanbul": ["Hybrid", "Organic"],
+          "Mangalore": ["GMO", "Organic"]
+        },
+        "Dates": {
+          "Dubai": ["Hybrid", "GMO"],
+          "Tehran": ["Hybrid", "Organic"],
+          "Sharjah": ["GMO", "Organic"]
+        }
+      },
+      "Nuts": {
+        "Cashew": {
+          "Panruti": ["Hybrid", "GMO"],
+          "Kannur": ["GMO", "Organic"],
+          "Guntur": ["Hybrid", "GMO"]
+        },
+        "Walnut": {
+          "Kalaktang": ["Hybrid", "Organic", "GMO"],
+          "Dheradhun": ["Organic", "GMO"]
+        },
+        "Almond": {
+          "Dheradhun": ["Hybrid", "Organic"],
+          "Srinagar": ["Hybrid", "GMO"]
+        },
+        "Groundnut": {
+          "Cuddalore": ["Hybrid", "Organic"],
+          "Nellore": ["Organic", "GMO"]
+        },
+        "Pistachio": {
+          "Kalaktang": ["Hybrid"],
+          "Dheradhun": ["GMO", "Organic"]
+        }
+      },
+      "Bananas": {
+        "Malavachai": {
+          "Yelagiri": ["Organic"],
+          "Sirumalai": ["Organic"],
+          "Yercaud": ["Organic"],
+          "Kambam": ["Organic", "Hybrid"]
+        },
+        "Karpooravalli": {
+          "Trichy": ["Organic"],
+          "Tanjore": ["Organic"],
+          "Nellai": ["Organic"],
+          "Theni": ["Hybrid"]
+        },
+        "Yellaki": {
+          "Kanyakumari": ["Hybrid", "Organic", "GMO"],
+          "Nagarkovil": ["Hybrid"],
+          "Kollam": ["GMO"],
+          "Pallakad": ["Organic", "GMO"]
+        },
+        "Sevazhai": {
+          "Pollachi": ["Hybrid", "Organic"],
+          "Marthandam": ["GMO"]
+        },
+        "Rasthali": {
+          "Salem": ["Organic"],
+          "Erode": ["Organic"]
+        },
+        "Poovan": {
+          "Cuddalore": ["Hybrid"],
+          "Pondicherry": ["GMO", "Hybrid"],
+          "Neyveli": ["GMO", "Hybrid"]
+        }
+      }
+    }
+  }
+}

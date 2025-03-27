@@ -307,7 +307,7 @@ const EntitiesTable = () => {
       <Link to="/ui">
         {" "}
         <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition cursor-pointer">
-           UI Change
+          Ui change
         </button>
       </Link>
       <h1 className="text-5xl font-bold text-start w-full">Entities</h1>
