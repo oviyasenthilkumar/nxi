@@ -505,7 +505,7 @@ const DynamicTable = ({ data, expandedRows, toggleRow }) => {
             className={`border border-gray-400 p-2 pl-${
               (level + 1) * 6
             } font-medium`}
-            style={{ paddingLeft: `${level * 20}px` } }
+            style={{ paddingLeft: `${level * 20}px` }}
           >
             <span className="text-gray-400 mr-2">L{level + 1}</span> {item.name}
           </td>
@@ -572,7 +572,20 @@ const ProcessingTables = ({ processingData, processingDetails, setProcessingData
   const handleRowClick = (id) => {
     setSelectedProcessingId(selectedProcessingId === id ? null : id);
   };
+  const addNewRow = () => {
+    const newId = (processingData.length + 1).toString().padStart(2, "0"); // Generate new ID
+    const newRow = {
+      id: newId,
+      pre: "",
+      suc: "",
+      inputs: [],
+      processingBrief: "",
+      outputs: "",
+    };
+    setProcessingData([...processingData, newRow]);
+  };
 
+  
   return (
     <div className="p-5 rounded-lg overflow-auto shadow-lg mb-6">
       <h2 className="text-2xl font-semibold mb-4">Tabulations</h2>
@@ -630,6 +643,13 @@ const ProcessingTables = ({ processingData, processingDetails, setProcessingData
               <td className="border border-gray-400 p-2">{item.outputs}</td>
             </tr>
           ))}
+           {/* Add New Row Button */}
+      <button
+        className="mb-4 px-4 py-2  text-blue-500 rounded "
+        onClick={addNewRow}
+      >
+        + 
+      </button>
         </tbody>
       </table>
 
