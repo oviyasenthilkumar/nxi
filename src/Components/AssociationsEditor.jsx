@@ -34,7 +34,7 @@ const AssociationsEditor = () => {
 
   return (
     <div><Header/>
-    <div className="p-6 bg-gray-900 text-gray-200 min-h-screen">
+    <div className="p-6 bg-white text-black min-h-screen">
     
       <h1 className="text-3xl font-semibold mb-6">Associations Directory</h1>
       <DynamicTable
@@ -56,11 +56,15 @@ const DynamicTable = ({ data, expandedRows, toggleRow }) => {
   const renderRows = (items, level = 0) => {
     return items.map((item) => (
       <>
-        <tr key={item.id} className="text-gray-200 bg-gray-800 ">
+        <tr
+          key={item.id}
+          className={` p-2 ${
+            level % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+          }`}
+        >
           <td
-            className="border border-gray-700 p-2 cursor-pointer w-10"
+            className=" p-2 cursor-pointer w-10"
             onClick={() => toggleRow(item.id)}
-            
           >
             {item.children && item.children.length > 0
               ? expandedRows[item.id]
@@ -69,14 +73,14 @@ const DynamicTable = ({ data, expandedRows, toggleRow }) => {
               : ""}
           </td>
           <td
-            className={`border border-gray-700 p-2 pl-${
+            className={` p-2 pl-${
               (level + 1) * 6
             } font-medium`}
             style={{ paddingLeft: `${level * 20}px` }}
           >
             <span className="text-gray-400 mr-2">L{level + 1}</span> {item.name}
           </td>
-          <td className="border border-gray-700 p-2">
+          <td className=" p-2">
             {item.description || ""}
           </td>
         </tr>
@@ -89,14 +93,14 @@ const DynamicTable = ({ data, expandedRows, toggleRow }) => {
 
   return (
     
-    <div className="bg-gray-800 p-5 rounded-lg overflow-auto shadow-lg mb-6">
+    <div className=" p-5 rounded-lg overflow-auto  mb-6">
    
-      <table className="w-full border border-gray-700 text-left">
+      <table className="w-full  text-left">
         <thead>
-          <tr className="bg-gray-700 text-gray-300">
-            <th className="border border-gray-700 p-3 w-10">#</th>
-            <th className="border border-gray-700 p-3">Association Name</th>
-            <th className="border border-gray-700 p-3">
+          <tr className="bg-gray-300 text-black">
+            <th className=" p-3 w-10">#</th>
+            <th className=" p-3">Association Name</th>
+            <th className=" p-3">
               Association Description
             </th>
           </tr>
@@ -268,13 +272,13 @@ const [selectedL3, setSelectedL3] = useState(null);
 
 
   return (
-    <div className="bg-gray-800 p-5 rounded-lg overflow-auto shadow-lg">
-      <h2 className="text-xl font-semibold mb-4 text-white">
+    <div className="bg-white p-5 rounded-lg overflow-auto shadow-lg">
+      <h2 className="text-xl font-semibold mb-4 text-black">
         Associations Creator - Editor
       </h2>
       {/* Show Selected Association in L1 Format */}
       {selectedAssociation && (
-        <div className="text-white  text-sm mb-4 0 p-3 rounded">
+        <div className="text-black  text-sm mb-4 0 p-3 rounded">
           L1 - {selectedAssociation}
         </div>
       )}
@@ -283,43 +287,39 @@ const [selectedL3, setSelectedL3] = useState(null);
         {/* Association Names (Left Column) */}
         <div className="w-1/4">
           <div className="relative">
-            <table className="w-full border border-gray-700 text-left">
+            <table className="w-full text-left">
               <thead>
-                <tr className="bg-gray-700 text-gray-300">
-                  <th className="border border-gray-700 p-3"># ID</th>
-                  <th className="border border-gray-700 p-3">
-                    Name of Association
-                  </th>
+                <tr className="bg-gray-300 text-black">
+                  <th className="text-black p-3"># ID</th>
+                  <th className="text-black p-3">Name of Association</th>
                 </tr>
               </thead>
               <tbody>
                 {associations.map((association, index) => (
                   <tr
                     key={index}
-                    className={`cursor-pointer text-gray-200 bg-gray-800 ${
+                    className={`cursor-pointer text-black bg-gray-300 ${
                       selectedAssociation === association
                         ? "bg-yellow-600 text-white"
                         : ""
                     }`}
                     onClick={() => handleAssociationClick(association)}
                   >
-                    <td className="border border-gray-700 p-3">{index + 1}</td>
-                    <td className="border border-gray-700 p-3 font-medium">
-                      {association}
-                    </td>
+                    <td className=" p-3">{index + 1}</td>
+                    <td className=" p-3 font-medium">{association}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           {/* ADD BUTTON ROW */}
-          <tr className="bg-gray-700 text-gray-300 hover:bg-gray-600 cursor-pointer">
-            <td className="border border-gray-700 p-3 text-center" colSpan="6">
+          <tr className="bg-gray-300 text-black hover:bg-gray-600 cursor-pointer">
+            <td className="p-3 text-center " colSpan="6">
               <button
                 className="w-5 h-3  rounded-full flex items-center justify-center hover:scale-110"
                 onClick={handleOpenModal}
               >
-                <Plus className="text-white w-6 h-6" />
+                <Plus className="text-black w-6 h-6" />
               </button>
             </td>
           </tr>
@@ -327,7 +327,7 @@ const [selectedL3, setSelectedL3] = useState(null);
         {/* Modal for Adding New Association */}
 
         {showModal && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-300 bg-opacity-50">
             <div className="bg-gray-400 p-5 rounded-lg w-[30%]">
               <h2 className="text-xl font-bold">Add New Association</h2>
               <input
@@ -335,7 +335,7 @@ const [selectedL3, setSelectedL3] = useState(null);
                 placeholder="Enter association name"
                 value={newAssociation}
                 onChange={(e) => setNewAssociation(e.target.value)}
-                className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-700 "
+                className="w-full p-2 border border-gray-600 rounded mb-4 bg-gray-300 "
                 required
               />
               <div className="flex justify-end gap-2">
@@ -360,20 +360,20 @@ const [selectedL3, setSelectedL3] = useState(null);
 
         {/* Category Checkboxes (Right Column) */}
         <div className="w-3/4 ">
-          <table className="w-full border border-gray-700 text-left">
+          <table className="w-full  text-left">
             <thead>
-              <tr className="bg-gray-700 text-gray-300">
+              <tr className="bg-gray-300 text-black">
                 {categories.map((category) => (
-                  <th key={category} className="border border-gray-700 p-3">
+                  <th key={category} className="border border-gray-300 p-3">
                     {category}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="">
-              <tr className="text-gray-200 bg-gray-800  ">
+            <tbody >
+              <tr className="text-black bg-gray-300  ">
                 {categories.map((category) => (
-                  <td key={category} className="border border-gray-700 p-18">
+                  <td key={category} className=" p-18">
                     {items[selectedAssociation][category]?.map((item) => (
                       <label key={item} className="flex items-center">
                         <input
@@ -413,28 +413,28 @@ const [selectedL3, setSelectedL3] = useState(null);
       </div>
 
       {showL2 && savedData.L2 && (
-        <div className="p-6  text-gray-200 ">
+        <div className="p-6  text-black">
           <h1 className="text-3xl font-semibold mb-6">L2 Associations</h1>
           <div className="w-full">
-            <table className="w-full border border-gray-700 text-left">
+            <table className="w-full  text-left">
               <thead>
-                <tr className="bg-gray-700 text-gray-300">
-                  <th className="border border-gray-700 p-3">
+                <tr className="bg-gray-300 text-black">
+                  <th className=" p-3">
                     Name of association
                   </th>
-                  <th className="border border-gray-700 p-3">Snow Fruits</th>
-                  <th className="border border-gray-700 p-3">Dry Fruits</th>
-                  <th className="border border-gray-700 p-3">Nuts</th>
-                  <th className="border border-gray-700 p-3">Bananas</th>
+                  <th className=" p-3">Snow Fruits</th>
+                  <th className=" p-3">Dry Fruits</th>
+                  <th className=" p-3">Nuts</th>
+                  <th className=" p-3">Bananas</th>
                 </tr>
               </thead>
 
               <tbody>
                 {savedData.L2.map((entry) => (
-                  <tr key={entry.id} className="text-gray-200 bg-gray-800">
+                  <tr key={entry.id} className="text-black bg-gray-200">
                     {/* Association Name - Clickable */}
                     <td
-                      className={`border border-gray-700 p-3 cursor-pointer ${
+                      className={` p-3 cursor-pointer ${
                         selectedL2 === entry.id
                           ? "bg-yellow-600 text-black"
                           : ""
@@ -449,7 +449,7 @@ const [selectedL3, setSelectedL3] = useState(null);
                       (category) => (
                         <td
                           key={category}
-                          className="border border-gray-700 p-3"
+                          className="p-3"
                         >
                           {entry.attributes[category]?.map((item, idx) => (
                             <label key={idx} className="flex items-center">
@@ -541,30 +541,30 @@ const [selectedL3, setSelectedL3] = useState(null);
       )}
       {/* L3 Table */}
       {showL3 && savedData.L3.length > 0 && (
-        <div className="p-6 text-gray-200">
-          <h1 className="text-3xl font-semibold mb-6">L3 Associations</h1>
+        <div className="p-6 ">
+          <h1 className="text-3xl text-black font-semibold mb-6">L3 Associations</h1>
           <div className="w-full">
-            <table className="w-full border border-gray-700 text-left">
+            <table className="w-full  text-left">
               <thead>
-                <tr className="bg-gray-700 text-gray-300">
-                  <th className="border border-gray-700 p-3">
+                <tr className="bg-gray-300 text-black">
+                  <th className=" p-3">
                     Name of Association
                   </th>
-                  <th className="border border-gray-700 p-3">Srinagar</th>
-                  <th className="border border-gray-700 p-3">Tehran</th>
-                  <th className="border border-gray-700 p-3">Kalanktang</th>
-                  <th className="border border-gray-700 p-3">Cuddalore</th>
-                  <th className="border border-gray-700 p-3">Erode</th>
+                  <th className=" p-3">Srinagar</th>
+                  <th className=" p-3">Tehran</th>
+                  <th className=" p-3">Kalanktang</th>
+                  <th className=" p-3">Cuddalore</th>
+                  <th className=" p-3">Erode</th>
                 </tr>
               </thead>
               <tbody>
                 {savedData.L3.filter(
                   (entry) => entry.parent_id === selectedL2
                 ).map((entry) => (
-                  <tr key={entry.id} className="text-gray-200 bg-gray-800">
+                  <tr key={entry.id} className="text-black bg-gray-200">
                     {/* Association Name - Clickable */}
                     <td
-                      className={`border border-gray-700 p-3 cursor-pointer ${
+                      className={` p-3 cursor-pointer ${
                         selectedL3 === entry.id
                           ? "bg-yellow-600 text-black"
                           : ""
@@ -588,7 +588,7 @@ const [selectedL3, setSelectedL3] = useState(null);
                       return (
                         <td
                           key={category}
-                          className="border border-gray-700 p-3"
+                          className=" p-3"
                         >
                           {attr && attr.type ? (
                             <label className="flex items-center">

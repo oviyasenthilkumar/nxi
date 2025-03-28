@@ -4,7 +4,41 @@
     "level": "L1",
     "name": "Apple Shakes",
     "description": "",
-    "children": []
+    "children": [
+      {
+        "id": "3",
+        "level": "L2",
+        "name": "AP Special",
+        "description": "",
+        "children": []
+      },
+      {
+        "id": "4",
+        "level": "L2",
+        "name": "TN Special",
+        "description": "",
+        "children": [
+          {
+            "id": "5",
+            "level": "L3",
+            "name": "Regular",
+            "description": ""
+          },
+          {
+            "id": "6",
+            "level": "L3",
+            "name": "Hybrid",
+            "description": ""
+          },
+          {
+            "id": "7",
+            "level": "L3",
+            "name": "Organic",
+            "description": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "2",
@@ -52,13 +86,81 @@
     "level": "L1",
     "name": "Nuts Overload",
     "description": "",
-    "children": []
+    "children": [
+      {
+        "id": "3",
+        "level": "L2",
+        "name": "AP Special",
+        "description": "",
+        "children": []
+      },
+      {
+        "id": "4",
+        "level": "L2",
+        "name": "TN Special",
+        "description": "",
+        "children": [
+          {
+            "id": "5",
+            "level": "L3",
+            "name": "Regular",
+            "description": ""
+          },
+          {
+            "id": "6",
+            "level": "L3",
+            "name": "Hybrid",
+            "description": ""
+          },
+          {
+            "id": "7",
+            "level": "L3",
+            "name": "Organic",
+            "description": ""
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "9",
     "level": "L1",
     "name": "Banana Smoothie",
     "description": "",
-    "children": []
+    "children": [
+      {
+        "id": "3",
+        "level": "L2",
+        "name": "AP Special",
+        "description": "",
+        "children": []
+      },
+      {
+        "id": "4",
+        "level": "L2",
+        "name": "TN Special",
+        "description": "",
+        "children": [
+          {
+            "id": "5",
+            "level": "L3",
+            "name": "Regular",
+            "description": ""
+          },
+          {
+            "id": "6",
+            "level": "L3",
+            "name": "Hybrid",
+            "description": ""
+          },
+          {
+            "id": "7",
+            "level": "L3",
+            "name": "Organic",
+            "description": ""
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -3,12 +3,12 @@ import {  NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="bg-[#101828]">
+    <div className="bg-[#ffffff]">
       <nav className="w-full flex justify-center space-x-8 text-lg font-semibold pt-10 p-4">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-white font-bold" : "text-gray-200"
+            isActive ? "text-black font-bold" : "text-gray-600"
           }
         >
           Nested Array
@@ -17,7 +17,7 @@ const Header = () => {
         <NavLink
           to="/association"
           className={({ isActive }) =>
-            isActive ? "text-white font-bold" : "text-gray-200"
+            isActive ? "text-black font-bold" : "text-gray-600"
           }
         >
           Associations
@@ -26,7 +26,7 @@ const Header = () => {
         <NavLink
           to="/detailing"
           className={({ isActive }) =>
-            isActive ? "text-white font-bold" : "text-gray-200"
+            isActive ? "text-black font-bold" : "text-gray-600"
           }
         >
           Detailing
