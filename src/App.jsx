@@ -1,6 +1,6 @@
 
 
-import Association from './Components/AssociationsEditor'
+import Association from "./Components/AssociationsEditor";
 // import Process from './Components/Process'
 import Detailing from './Components/DetailingEditor'
 import React from "react";
