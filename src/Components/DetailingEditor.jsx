@@ -191,54 +191,10 @@ const ProcessingEditor = () => {
   const [selectedL1Association, setSelectedL1Association] = useState(null);
 
   useEffect(() => {
-    const dummyProcessingData = [
-      {
-        id: "01",
-        pre: "-",
-        suc: "02",
-        inputs: [],
-        processingBrief: "Primary base pulp",
-        outputs: "Apricot pulp",
-      },
-      {
-        id: "02",
-        pre: "01",
-        suc: "03",
-        inputs: [],
-        processingBrief: "Filler mix",
-        outputs: "Dates mix",
-      },
-      {
-        id: "03",
-        pre: "01",
-        suc: "04",
-        inputs: [],
-        processingBrief: "Taste enhance mix",
-        outputs: "Banana pulp",
-      },
-      {
-        id: "04",
-        pre: "03",
-        suc: "-",
-        inputs: [],
-        processingBrief: "Hydration for baking",
-        outputs: "Nuts milk",
-      },
-    ];
-    setProcessingData(dummyProcessingData);
-
-    const dummyProcessingDetails = [
-      { id: "01", scope: "Washed and dried only", limits: "50 - 60 gas", processingDetails: "..." },
-      { id: "02", scope: "Soaked overnight", limits: "Min 6 hours", processingDetails: ".." },
-      { id: "03", scope: "Filtered and blended", limits: "Proper blending", processingDetails: "..." },
-      { id: "04", scope: "Dried & Packed", limits: "Storage up to 6 months", processingDetails: "..." },
-    ];
-    setProcessingDetails(dummyProcessingDetails);
-    
     setDynamicTableData(tableData);
   }, []);
 
-  // Update array entities when selected association changes
+  // Update array entities and processing data when selected association changes
   useEffect(() => {
     if (selectedL1Association) {
       // Transform the selected data into array entities format
@@ -250,15 +206,61 @@ const ProcessingEditor = () => {
         }));
       setArrayEntities(newArrayEntities);
 
-      // Clear existing inputs in processing data
-      setProcessingData(prevData => 
-        prevData.map(item => ({
-          ...item,
-          inputs: []
-        }))
-      );
+      // Initialize processing data based on association
+      if (selectedL1Association.name.toLowerCase() === "dates dessert") {
+        const dummyData = [
+          {
+            id: "01",
+            pre: "-",
+            suc: "02",
+            inputs: [],
+            processingBrief: "Primary base pulp",
+            outputs: "Apricot pulp",
+          },
+          {
+            id: "02",
+            pre: "01",
+            suc: "03",
+            inputs: [],
+            processingBrief: "Filler mix",
+            outputs: "Dates mix",
+          },
+          {
+            id: "03",
+            pre: "01",
+            suc: "04",
+            inputs: [],
+            processingBrief: "Taste enhance mix",
+            outputs: "Banana pulp",
+          },
+          {
+            id: "04",
+            pre: "03",
+            suc: "-",
+            inputs: [],
+            processingBrief: "Hydration for baking",
+            outputs: "Nuts milk",
+          },
+        ];
+        setProcessingData(dummyData);
+
+        const dummyDetails = [
+          { id: "01", scope: "Washed and dried only", limits: "50 - 60 gas", processingDetails: "..." },
+          { id: "02", scope: "Soaked overnight", limits: "Min 6 hours", processingDetails: ".." },
+          { id: "03", scope: "Filtered and blended", limits: "Proper blending", processingDetails: "..." },
+          { id: "04", scope: "Dried & Packed", limits: "Storage up to 6 months", processingDetails: "..." },
+        ];
+        setProcessingDetails(dummyDetails);
+      } else {
+        // For other associations, initialize with empty arrays
+        setProcessingData([]);
+        setProcessingDetails([]);
+      }
     } else {
+      // When no association is selected, clear all data
       setArrayEntities([]);
+      setProcessingData([]);
+      setProcessingDetails([]);
     }
   }, [selectedL1Association]);
 
@@ -271,25 +273,7 @@ const ProcessingEditor = () => {
 
   const handleLevelSelect = (level, association) => {
     if (level === 'L1') {
-      console.log('Selected association:', association); // Debug log
       setSelectedL1Association(association);
-      
-      // Transform the selected data into array entities format
-      const newArrayEntities = Object.entries(association.selected)
-        .filter(([_, items]) => items && items.length > 0)
-        .map(([category, items]) => ({
-          category,
-          items: items
-        }));
-      setArrayEntities(newArrayEntities);
-
-      // Clear existing inputs in processing data
-      setProcessingData(prevData => 
-        prevData.map(item => ({
-          ...item,
-          inputs: []
-        }))
-      );
     }
   };
 
@@ -308,13 +292,15 @@ const ProcessingEditor = () => {
           data={arrayEntities} 
           selectedAssociation={selectedL1Association}
         />
-        <ProcessingTables
-          processingData={processingData}
-          processingDetails={processingDetails}
-          setProcessingData={setProcessingData}
-          setProcessingDetails={setProcessingDetails}
-          arrayEntities={arrayEntities}
-        />
+        {selectedL1Association && (
+          <ProcessingTables
+            processingData={processingData}
+            processingDetails={processingDetails}
+            setProcessingData={setProcessingData}
+            setProcessingDetails={setProcessingDetails}
+            arrayEntities={arrayEntities}
+          />
+        )}
       </div>
     </div>
   );

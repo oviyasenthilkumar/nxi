@@ -1,37 +1,37 @@
 [
   {
-    "id": "L1_1",
+    "id": "1",
     "level": "L1",
     "name": "Apple Shakes",
     "description": "",
     "children": [
       {
-        "id": "L2_1",
+        "id": "3",
         "level": "L2",
         "name": "AP Special",
         "description": "",
         "children": []
       },
       {
-        "id": "L2_2",
+        "id": "4",
         "level": "L2",
         "name": "TN Special",
         "description": "",
         "children": [
           {
-            "id": "L3_1",
+            "id": "5",
             "level": "L3",
             "name": "Regular",
             "description": ""
           },
           {
-            "id": "L3_2",
+            "id": "6",
             "level": "L3",
             "name": "Hybrid",
             "description": ""
           },
           {
-            "id": "L3_3",
+            "id": "7",
             "level": "L3",
             "name": "Organic",
             "description": ""
@@ -41,38 +41,38 @@
     ]
   },
   {
-    "id": "L1_2",
+    "id": "2",
     "level": "L1",
     "name": "Dates Dessert",
     "description": "",
     "children": [
       {
-        "id": "L2_3",
+        "id": "3",
         "level": "L2",
         "name": "AP Special",
         "description": "",
         "children": []
       },
       {
-        "id": "L2_4",
+        "id": "4",
         "level": "L2",
         "name": "TN Special",
         "description": "",
         "children": [
           {
-            "id": "L3_4",
+            "id": "5",
             "level": "L3",
             "name": "Regular",
             "description": ""
           },
           {
-            "id": "L3_5",
+            "id": "6",
             "level": "L3",
             "name": "Hybrid",
             "description": ""
           },
           {
-            "id": "L3_6",
+            "id": "7",
             "level": "L3",
             "name": "Organic",
             "description": ""
@@ -82,38 +82,38 @@
     ]
   },
   {
-    "id": "L1_3",
+    "id": "8",
     "level": "L1",
     "name": "Nuts Overload",
     "description": "",
     "children": [
       {
-        "id": "L2_5",
+        "id": "3",
         "level": "L2",
         "name": "AP Special",
         "description": "",
         "children": []
       },
       {
-        "id": "L2_6",
+        "id": "4",
         "level": "L2",
         "name": "TN Special",
         "description": "",
         "children": [
           {
-            "id": "L3_7",
+            "id": "5",
             "level": "L3",
             "name": "Regular",
             "description": ""
           },
           {
-            "id": "L3_8",
+            "id": "6",
             "level": "L3",
             "name": "Hybrid",
             "description": ""
           },
           {
-            "id": "L3_9",
+            "id": "7",
             "level": "L3",
             "name": "Organic",
             "description": ""
@@ -123,38 +123,38 @@
     ]
   },
   {
-    "id": "L1_4",
+    "id": "9",
     "level": "L1",
     "name": "Banana Smoothie",
     "description": "",
     "children": [
       {
-        "id": "L2_7",
+        "id": "3",
         "level": "L2",
         "name": "AP Special",
         "description": "",
         "children": []
       },
       {
-        "id": "L2_8",
+        "id": "4",
         "level": "L2",
         "name": "TN Special",
         "description": "",
         "children": [
           {
-            "id": "L3_10",
+            "id": "5",
             "level": "L3",
             "name": "Regular",
             "description": ""
           },
           {
-            "id": "L3_11",
+            "id": "6",
             "level": "L3",
             "name": "Hybrid",
             "description": ""
           },
           {
-            "id": "L3_12",
+            "id": "7",
             "level": "L3",
             "name": "Organic",
             "description": ""

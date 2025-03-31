@@ -1,9 +1,8 @@
 
 
-import Association from "./Components/AssociationsEditor";
+import Association from './Components/AssociationsEditor'
 // import Process from './Components/Process'
 import Detailing from './Components/DetailingEditor'
-
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
 import NestedTable from './Components/NestedTable';

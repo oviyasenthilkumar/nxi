@@ -340,8 +340,7 @@ const DynamicTable = ({
                           onAddNew(`L${level + 2}`, item);
                         }}
                       >
-                        <Plus className="w-4 h-4 inline mr-1" /> for{" "}
-                        {item.name}
+                        <Plus className="w-4 h-4 inline mr-1" /> Add New
                       </td>
                       <td className="p-2"></td>
                     </tr>
@@ -359,8 +358,7 @@ const DynamicTable = ({
                     onAddNew(`L${level + 1}`, parentItem);
                   }}
                 >
-                  <Plus className="w-4 h-4 inline mr-1" /> for{" "}
-                  {parentItem.name}
+                  <Plus className="w-4 h-4 inline mr-1" />  Add New
                 </td>
                 <td className="p-2"></td>
               </tr>
@@ -377,7 +375,7 @@ const DynamicTable = ({
                 onAddNew("L1");
               }}
             >
-              <Plus className="w-4 h-4 inline mr-1" /> New Root
+              <Plus className="w-4 h-4 inline mr-1" /> Add New
             </td>
             <td className="p-2"></td>
           </tr>
