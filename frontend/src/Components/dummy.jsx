@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import tableData from "./TableData"; // Import the JSON data
 import { IoMdArrowDropright } from "react-icons/io";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Header from "./Header";
 import { PlusCircle, Plus } from "lucide-react";
+
+const API_URL = 'http://localhost:5000/api';
 
 const NestedTable = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,20 +15,58 @@ const NestedTable = () => {
     description: "",
     attributes: [{ name: "attribute1", value: "" }],
     parent: "",
+    parentName: "",
   });
-  const [data, setData] = useState(tableData);
+  const [data, setData] = useState([]);
   const [rotated, setRotated] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${API_URL}/items`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      const items = await response.json();
+      setData(items);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const toggleExpand = (name) => {
     setExpanded((prev) => ({ ...prev, [name]: !prev[name] }));
   };
 
   const handleOpenModal = (parentPath) => {
+    // Find the parent item to get its name
+    const findParentName = (items, parentId) => {
+      for (const item of items) {
+        if (item.id === parseInt(parentId)) {
+          return item.name;
+        }
+        if (item.children) {
+          const found = findParentName(item.children, parentId);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+
+    const parentName = parentPath ? findParentName(data, parentPath) : "";
+    
     setFormData({
       name: "",
       description: "",
       attributes: [{ name: "attribute1", value: "" }],
-      parent: parentPath
+      parent: parentPath,
+      parentName: parentName
     });
     setShowModal(true);
   };
@@ -39,6 +78,7 @@ const NestedTable = () => {
       description: "",
       attributes: [{ name: "attribute1", value: "" }],
       parent: "",
+      parentName: "",
     });
   };
 
@@ -64,54 +104,71 @@ const NestedTable = () => {
     }
   };
 
-  const addChild = (items, parentPath, currentPath = []) => {
-    for (let item of items) {
-      const newPath = [...currentPath, item.name];
-
-      if (newPath.join(" > ") === parentPath) {
-        item.children = item.children || [];
-        const attributesObject = formData.attributes.reduce((acc, attr, index) => {
-          acc[`attribute${index + 1}`] = attr.value;
-          return acc;
-        }, {});
-
-        item.children.push({
-          name: formData.name,
-          description: formData.description,
-          ...attributesObject,
-          children: [],
-        });
-        return true;
-      }
-
-      if (item.children && addChild(item.children, parentPath, newPath)) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedData = [...data];
-    const attributesObject = formData.attributes.reduce((acc, attr, index) => {
-      acc[`attribute${index + 1}`] = attr.value;
-      return acc;
-    }, {});
-
-    if (formData.parent === "") {
-      updatedData.push({
+    try {
+      const newItem = {
         name: formData.name,
         description: formData.description,
-        ...attributesObject,
-        children: [],
-      });
-    } else {
-      addChild(updatedData, formData.parent);
-    }
+        parentId: formData.parent || null,
+        attribute1: formData.attributes[0]?.value || "",
+        attribute2: formData.attributes[1]?.value || "",
+        attribute3: formData.attributes[2]?.value || "",
+        attribute4: formData.attributes[3]?.value || ""
+      };
 
-    setData(updatedData);
-    handleCloseModal();
+      const response = await fetch(`${API_URL}/items`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newItem),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add item');
+      }
+
+      const addedItem = await response.json();
+      
+      // Update the local state
+      if (formData.parent) {
+        // If it's a child item, update the parent's children
+        setData(prevData => {
+          const updateItem = (items) => {
+            return items.map(item => {
+              if (item.id === parseInt(formData.parent)) {
+                return {
+                  ...item,
+                  children: [...(item.children || []), addedItem]
+                };
+              }
+              if (item.children) {
+                return {
+                  ...item,
+                  children: updateItem(item.children)
+                };
+              }
+              return item;
+            });
+          };
+          return updateItem(prevData);
+        });
+      } else {
+        // If it's a root item, add it to the main data array
+        setData(prevData => [...prevData, addedItem]);
+      }
+
+      setShowModal(false);
+      setFormData({
+        name: '',
+        description: '',
+        attributes: [{ name: '', value: '' }]
+      });
+    } catch (error) {
+      console.error('Error adding item:', error);
+      alert('Failed to add item. Please try again.');
+    }
   };
 
   const renderRows = (items, level = 0, parentPath = []) => {
@@ -120,11 +177,6 @@ const NestedTable = () => {
       const isExpanded = expanded[newPath.join(" > ")];
       const isLastItem = index === arr.length - 1;
       const hasChildren = item.children && item.children.length > 0;
-
-      // Get attribute keys excluding name, description, and children
-      const attributeKeys = Object.keys(item).filter(key => 
-        key.startsWith('attribute') && item[key] !== undefined
-      );
 
       return [
         <tr
@@ -162,11 +214,31 @@ const NestedTable = () => {
 
           <td className="p-2">{item.description || "-"}</td>
           
-          {[...Array(4)].map((_, index) => (
-            <td key={`attr${index + 1}`} className="p-2">
-              {item[`attribute${index + 1}`] || "-"}
-            </td>
-          ))}
+          {/* Attribute columns with level indicators */}
+          <td className="p-2">
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500"></span>
+              <span>{item.attribute1 || "-"}</span>
+            </div>
+          </td>
+          <td className="p-2">
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500"></span>
+              <span>{item.attribute2 || "-"}</span>
+            </div>
+          </td>
+          <td className="p-2">
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500"></span>
+              <span>{item.attribute3 || "-"}</span>
+            </div>
+          </td>
+          <td className="p-2">
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500"></span>
+              <span>{item.attribute4 || "-"}</span>
+            </div>
+          </td>
         </tr>,
 
         isExpanded && item.children && renderRows(item.children, level + 1, newPath),
@@ -178,7 +250,7 @@ const NestedTable = () => {
             ))}
             <td
               className="p-2 text-green-400 cursor-pointer text-center"
-              onClick={() => handleOpenModal(newPath.join(" > "))}
+              onClick={() => handleOpenModal(item.id.toString())}
             >
               <button
                 title="Add New"
@@ -248,6 +320,10 @@ const NestedTable = () => {
 
   const depth = maxDepth(data);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Header />
@@ -310,8 +386,8 @@ const NestedTable = () => {
                   <label className="block mb-2 text-gray-700">Parent Name:</label>
                   <input
                     type="text"
-                    name="parent"
-                    value={formData.parent}
+                    name="parentName"
+                    value={formData.parentName || "Root Level"}
                     disabled
                     className="w-full p-2 border border-gray-300 rounded bg-gray-200 text-gray-900"
                   />
@@ -344,14 +420,14 @@ const NestedTable = () => {
                   {formData.attributes.map((attr, index) => (
                     <div key={index}>
                       <label className="block mb-2 text-gray-700">
-                        Attribute {index + 1}:
+                        Level {index + 1} Attribute:
                       </label>
                       <input
                         type="text"
                         value={attr.value}
                         onChange={(e) => handleAttributeChange(index, e.target.value)}
                         className="w-full p-2 border border-gray-300 rounded bg-white text-gray-900"
-                        placeholder={`Enter attribute ${index + 1}`}
+                        placeholder={`Enter Level ${index + 1} attribute`}
                       />
                     </div>
                   ))}
@@ -363,7 +439,7 @@ const NestedTable = () => {
                       className="flex items-center gap-2 text-blue-500 hover:text-blue-700 mt-2"
                     >
                       <Plus className="w-4 h-4" />
-                      Add Attribute
+                      Add Level Attribute
                     </button>
                   )}
                 </div>
