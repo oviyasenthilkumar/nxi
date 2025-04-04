@@ -304,12 +304,12 @@ const EntitiesTable = () => {
   return (
     <div className="flex flex-col items-center min-h-screen p-8">
       <Header />
-      <Link to="/ui">
+      {/* <Link to="/ui">
         {" "}
         <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition cursor-pointer">
           Ui change
         </button>
-      </Link>
+      </Link> */}
       <h1 className="text-5xl font-bold text-start w-full">Entities</h1>
       {/* Header */}
       <div className="flex justify-between items-center w-full max-w-8xl mb-4 mt-5">

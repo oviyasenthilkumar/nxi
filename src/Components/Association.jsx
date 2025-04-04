@@ -27,12 +27,12 @@ const Association = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen p-8">
-      <Link to="/ui">
+      {/* <Link to="/ui">
         {" "}
         <button className="absolute top-4 left-4 border   px-4 py-2  shadow-md  transition cursor-pointer">
           Ui change
         </button>
-      </Link>
+      </Link> */}
       <Header />
 
       {/* Header */}
